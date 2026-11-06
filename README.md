@@ -1,16 +1,17 @@
-# WINE EDITOR v2.0
-
-Mobile-first photo editor prototype.
-
-## Files
-- `index.html` — app structure and embedded VELOR brand mark
-- `styles.css` — responsive visual system
-- `app.js` — client-side editing tools
+# WINE EDITOR v2.1 — AI editing enabled
 
 ## Included
-Image upload, brightness/contrast/saturation/warmth, looks, filters, aspect presets, text overlay, undo/redo snapshots, reset, before/after toggle, PNG export.
+- Original WINE EDITOR v2.0 tools
+- Real image-to-image editing via fal.ai `fal-ai/glm-image/image-to-image`
+- Vercel serverless endpoints under `/api`
+- API key stays server-side; supports the existing Vercel variable `fal_key` (and `FAL_KEY`)
+- Queue submit + status polling so the browser does not hold a long-running server request
 
-## AI editing
-The AI panel is a UI placeholder only. It does not call fal.ai yet. Add a server-side API route that reads the Vercel environment variable `fal_key` before enabling real AI requests. Never expose the key in browser JavaScript.
+## Vercel environment variable
+The project reads `fal_key` first, then `FAL_KEY`. Keep the value private. Ensure it is enabled for the Production environment. After changing environment variables, redeploy.
 
-Deploy these files to the root of the Vercel project.
+## Deploy
+Upload the contents of this folder to the root of the connected Git repository and commit/push. Vercel will deploy automatically. Do not upload the ZIP as a single file to the site root; extract it and preserve the `api/` folder.
+
+## Notes
+The AI endpoint accepts JPG, PNG, and WEBP data URLs up to roughly 2.5 MB. Image editing is billed by fal.ai according to the selected model/account pricing. Add authentication and rate limiting before opening this endpoint to the public to prevent abuse and unexpected usage charges.
