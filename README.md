@@ -1,17 +1,15 @@
-# WINE EDITOR v2.1 — AI editing enabled
+# WINE EDITOR v3.0 — Installable foundation
 
-## Included
-- Original WINE EDITOR v2.0 tools
-- Real image-to-image editing via fal.ai `fal-ai/glm-image/image-to-image`
-- Vercel serverless endpoints under `/api`
-- API key stays server-side; supports the existing Vercel variable `fal_key` (and `FAL_KEY`)
-- Queue submit + status polling so the browser does not hold a long-running server request
+This update adds the Progressive Web App (PWA) foundation: install metadata, app icons, an install prompt, and a service worker for caching the app shell. The existing photo editor and optional fal.ai endpoints are preserved.
 
-## Vercel environment variable
-The project reads `fal_key` first, then `FAL_KEY`. Keep the value private. Ensure it is enabled for the Production environment. After changing environment variables, redeploy.
+## Deploy to Vercel
+1. Extract this ZIP.
+2. Upload/replace the project files in the root of the GitHub repository (keep `api/` and `icons/` folders).
+3. Commit and push; Vercel should deploy from the connected repository.
+4. Open the deployed site over HTTPS. On supported browsers, use the install prompt or browser menu → Install app / Add to Home Screen.
 
-## Deploy
-Upload the contents of this folder to the root of the connected Git repository and commit/push. Vercel will deploy automatically. Do not upload the ZIP as a single file to the site root; extract it and preserve the `api/` folder.
-
-## Notes
-The AI endpoint accepts JPG, PNG, and WEBP data URLs up to roughly 2.5 MB. Image editing is billed by fal.ai according to the selected model/account pricing. Add authentication and rate limiting before opening this endpoint to the public to prevent abuse and unexpected usage charges.
+## Important
+- This is the installable app foundation, not a finished CapCut-equivalent editor yet. Video timeline, multi-track editing, audio mixing, transitions, and video export are the next development stages.
+- The app shell can be cached for offline opening, but AI/API features and external fonts require a connection.
+- AI editing uses fal.ai and may incur usage charges. Keep `FAL_KEY` private in Vercel; do not put it in frontend files. Add authentication and rate limiting before public launch.
+- The current photo editor remains available.
