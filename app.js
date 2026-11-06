@@ -63,4 +63,4 @@ async function runAIEdit(){
 $('#aiEditBtn').onclick=runAIEdit;
 const stage=$('#stage');stage.addEventListener('dragover',e=>{e.preventDefault();stage.classList.add('dragging')});stage.addEventListener('dragleave',()=>stage.classList.remove('dragging'));stage.addEventListener('drop',e=>{e.preventDefault();stage.classList.remove('dragging');loadFile(e.dataTransfer.files[0])});
 openPanel('adjust');updateHistory();
-                                      
+                                                                             
