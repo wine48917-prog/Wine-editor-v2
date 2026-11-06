@@ -1,15 +1,19 @@
-# WINE EDITOR v3.0 — Installable foundation
+# WINE EDITOR — Video Studio MVP
 
-This update adds the Progressive Web App (PWA) foundation: install metadata, app icons, an install prompt, and a service worker for caching the app shell. The existing photo editor and optional fal.ai endpoints are preserved.
+This package contains the existing WINE photo editor plus a first working browser-based video editor module.
+
+## Included
+- Existing photo editing: brightness, contrast, saturation, warmth, filters, aspect ratios, text overlay, undo/redo and PNG export.
+- Video editor: import one local video, preview/playback, playback speed, seek, set trim-in/trim-out, optionally add a music file, and export the selected segment as WebM using the browser MediaRecorder API.
+- Responsive layout for desktop and mobile.
+
+## Run locally
+Open `index.html` in a modern browser, or serve this folder with any static web server. For best video export support use an up-to-date Chrome or Edge over HTTPS or localhost.
 
 ## Deploy to Vercel
-1. Extract this ZIP.
-2. Upload/replace the project files in the root of the GitHub repository (keep `api/` and `icons/` folders).
-3. Commit and push; Vercel should deploy from the connected repository.
-4. Open the deployed site over HTTPS. On supported browsers, use the install prompt or browser menu → Install app / Add to Home Screen.
+1. Upload/replace `index.html`, `styles.css`, `app.js`, and `README.md` in the same GitHub project folder.
+2. Commit and push the changes.
+3. Wait for Vercel to finish the deployment, then refresh the live site.
 
-## Important
-- This is the installable app foundation, not a finished CapCut-equivalent editor yet. Video timeline, multi-track editing, audio mixing, transitions, and video export are the next development stages.
-- The app shell can be cached for offline opening, but AI/API features and external fonts require a connection.
-- AI editing uses fal.ai and may incur usage charges. Keep `FAL_KEY` private in Vercel; do not put it in frontend files. Add authentication and rate limiting before public launch.
-- The current photo editor remains available.
+## Important limitations of this build
+This is a functional first video-editing milestone, not full CapCut parity yet. It currently edits one video clip at a time. It does not yet provide multi-track editing, transitions, keyframes, captions, effects, or frame-accurate professional rendering. WebM export and audio mixing depend on browser support and available device resources. AI editing remains dependent on a separately configured secure backend/API.
